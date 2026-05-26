@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "target_role": "Test Role",
+  "job_requirements": [
+    {
+      "id": "REQ-ONE",
+      "summary": "A required capability."
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-ONE",
+      "statement": "A verified claim without evidence.",
+      "status": "verified",
+      "resume_ready": false,
+      "requirement_ids": [
+        "REQ-ONE"
+      ],
+      "evidence": [],
+      "verification": {
+        "method": "Manual review.",
+        "result": "No artifact supplied.",
+        "verified_on": "2026-05-26"
+      },
+      "source_disclosure": "Fixture for validation testing."
+    }
+  ]
+}

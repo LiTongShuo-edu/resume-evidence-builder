@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "target_role": "Test Role",
+  "job_requirements": [
+    {
+      "id": "REQ-ONE",
+      "summary": "A required capability."
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-ONE",
+      "statement": "A resume claim pending verification.",
+      "status": "unverified",
+      "resume_ready": true,
+      "requirement_ids": [
+        "REQ-ONE"
+      ],
+      "evidence": [],
+      "source_disclosure": "Fixture for validation testing."
+    }
+  ]
+}

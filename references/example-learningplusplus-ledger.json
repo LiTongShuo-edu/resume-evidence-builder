@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "target_role": "测试开发工程师（C/C++）实习生",
+  "project": {
+    "name": "LearningPlusPlus",
+    "public_repository": "https://github.com/LiTongShuo-edu/LearningPlusPlus"
+  },
+  "job_requirements": [
+    {
+      "id": "REQ-CPP",
+      "summary": "具备 C/C++ 基础，能够阅读代码并理解指针、内存与类等知识点。"
+    },
+    {
+      "id": "REQ-VERIFY",
+      "summary": "能够进行基础代码调试与可重复的验证。"
+    },
+    {
+      "id": "REQ-AI",
+      "summary": "能够使用 AI 编程工具完成生成、调试和迭代，并说明协作边界。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-SOURCE-CLASSIFICATION",
+      "statement": "公开仓库区分 34 份留存早期手写源码、13 份 AI 协助复现案例和 3 份岗位扩展示例。",
+      "status": "verified",
+      "resume_ready": true,
+      "requirement_ids": [
+        "REQ-CPP",
+        "REQ-AI"
+      ],
+      "evidence": [
+        {
+          "kind": "document",
+          "label": "仓库 README 的来源标识和已完成验证说明",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/blob/main/README.md",
+          "supports": "公开区分代码来源类别并记录各类别数量。"
+        }
+      ],
+      "verification": {
+        "method": "读取公开 README 与目录标识说明，核对来源分类和数量表述。",
+        "result": "README 明确记录 34 份留存旧作、13 份复现案例和 3 份岗位扩展示例。",
+        "verified_on": "2026-05-26"
+      },
+      "source_disclosure": "无后缀源码为留存旧作；带＊与^目录的代码包含 Codex 协作，不表述为历史原作。"
+    },
+    {
+      "id": "CLM-AUTOMATED-VERIFICATION",
+      "statement": "新增的 13 个复现案例与 3 个岗位扩展示例通过 16 项自动运行测试。",
+      "status": "verified",
+      "resume_ready": true,
+      "requirement_ids": [
+        "REQ-VERIFY",
+        "REQ-AI"
+      ],
+      "evidence": [
+        {
+          "kind": "test_record",
+          "label": "调试与验证说明",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/blob/main/docs/%E8%B0%83%E8%AF%95%E4%B8%8E%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E.md",
+          "supports": "记录 CMake/CTest 环境与 16/16 测试通过结果。"
+        },
+        {
+          "kind": "artifact",
+          "label": "GitHub Actions 构建入口",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/actions",
+          "supports": "提供持续验证流程的公开访问入口。"
+        }
+      ],
+      "verification": {
+        "method": "核对公开验证说明中的 CTest 汇总，并检查 Actions 页面可访问性。",
+        "result": "验证说明记录 Visual Studio 2022 / MSVC、C++17、CMake 环境下 16/16 测试通过。",
+        "verified_on": "2026-05-26"
+      },
+      "source_disclosure": "测试结论仅覆盖仓库中列出的新增示例，不推广为生产系统性能结论。"
+    },
+    {
+      "id": "CLM-LEGACY-COMPILE-BOUNDARY",
+      "statement": "34 份留存旧源码正文经核对保持一致，独立编译尝试为 33/34 通过，原始错误被保留。",
+      "status": "verified",
+      "resume_ready": true,
+      "requirement_ids": [
+        "REQ-VERIFY"
+      ],
+      "evidence": [
+        {
+          "kind": "document",
+          "label": "手写旧作编译记录",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/blob/main/docs/%E6%89%8B%E5%86%99%E6%97%A7%E4%BD%9C%E7%BC%96%E8%AF%91%E8%AE%B0%E5%BD%95.md",
+          "supports": "记录旧源码独立编译尝试结果及保留问题。"
+        }
+      ],
+      "verification": {
+        "method": "核对公开编译记录与 README 的边界说明。",
+        "result": "公开材料记录 33/34 编译通过，并说明未为发布修改原始编译错误。",
+        "verified_on": "2026-05-26"
+      },
+      "source_disclosure": "仅陈述公开编译记录，不将旧作的未通过项隐藏或修饰为通过。"
+    },
+    {
+      "id": "CLM-PRIVATE-MATERIALS",
+      "statement": "私人课程资料和未授权第三方原件不作为公开简历证据。",
+      "status": "excluded",
+      "resume_ready": false,
+      "requirement_ids": [],
+      "evidence": [
+        {
+          "kind": "document",
+          "label": "参考边界与原创声明",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/blob/main/docs/%E5%8F%82%E8%80%83%E8%BE%B9%E7%95%8C%E4%B8%8E%E5%8E%9F%E5%88%9B%E5%A3%B0%E6%98%8E.md",
+          "supports": "公开说明不上传或转发未授权资料。"
+        }
+      ],
+      "source_disclosure": "该声明用于排除不可公开材料，不作为能力成果扩写。"
+    }
+  ]
+}

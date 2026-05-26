@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resume Evidence Builder"
+  short_description: "按岗位定制技术简历，并核验公开证据、验证结果与表述边界"
+  default_prompt: "Use $resume-evidence-builder to produce a job-tailored resume backed by verified public evidence."
