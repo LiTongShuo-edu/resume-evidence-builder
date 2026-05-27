@@ -19,10 +19,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Create virtual environment
+        run: python -m venv .venv
+
       - name: Validate published example and links
         run: |
-          python scripts/validate_evidence.py references/example-learningplusplus-ledger.json --strict-resume --check-public-links
-          python scripts/validate_evidence.py references/example-public-portfolio-ledger.json --strict-resume --check-public-links
+          .venv/bin/python scripts/validate_evidence.py references/example-learningplusplus-ledger.json --strict-resume --check-public-links
+          .venv/bin/python scripts/validate_evidence.py references/example-public-portfolio-ledger.json --strict-resume --check-public-links
 
       - name: Run validation tests
-        run: python -m unittest discover -s tests -v
+        run: .venv/bin/python -m unittest discover -s tests -v
