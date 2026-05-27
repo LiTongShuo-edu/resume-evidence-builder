@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "target_role": "测试开发工程师（C/C++）实习生",
+  "projects": [
+    {
+      "name": "LearningPlusPlus",
+      "public_repository": "https://github.com/LiTongShuo-edu/LearningPlusPlus"
+    },
+    {
+      "name": "eye-galvo-control",
+      "public_repository": "https://github.com/LiTongShuo-edu/eye-galvo-control"
+    },
+    {
+      "name": "ppt-study-guide-skill",
+      "public_repository": "https://github.com/LiTongShuo-edu/ppt-study-guide-skill"
+    }
+  ],
+  "job_requirements": [
+    {
+      "id": "REQ-CPP",
+      "summary": "具备 C/C++ 基础和基础调试验证能力。"
+    },
+    {
+      "id": "REQ-PYTHON-AI",
+      "summary": "能够使用 Python 组织视觉或设备联动流程。"
+    },
+    {
+      "id": "REQ-AI-COLLAB",
+      "summary": "使用 AI 编程工具完成迭代，并能够解释成果边界。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-CPP-TESTS",
+      "statement": "LearningPlusPlus 的 13 个复现案例与 3 个岗位扩展示例在 CMake/CTest 流程中通过 16/16 项自动测试。",
+      "status": "verified",
+      "resume_ready": true,
+      "requirement_ids": [
+        "REQ-CPP",
+        "REQ-AI-COLLAB"
+      ],
+      "evidence": [
+        {
+          "kind": "document",
+          "label": "LearningPlusPlus 调试与验证说明",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/blob/main/docs/%E8%B0%83%E8%AF%95%E4%B8%8E%E9%AA%8C%E8%AF%81%E8%AF%B4%E6%98%8E.md",
+          "supports": "说明构建环境与 16/16 自动测试结果。"
+        },
+        {
+          "kind": "artifact",
+          "label": "LearningPlusPlus Actions",
+          "url": "https://github.com/LiTongShuo-edu/LearningPlusPlus/actions",
+          "supports": "提供持续验证运行入口。"
+        }
+      ],
+      "verification": {
+        "method": "读取公开验证说明，并检查 Windows/MSVC Actions 最近运行结果。",
+        "result": "2026-05-27 复核本地 CTest 16/16 通过，公开 Actions 运行通过。",
+        "verified_on": "2026-05-27"
+      },
+      "source_disclosure": "复现和扩展示例包含 Codex 协作；测试结论不扩展为生产项目经验。"
+    },
+    {
+      "id": "CLM-EYE-SOFTWARE",
+      "statement": "eye-galvo-control 使用 Python 组织 RealSense、MediaPipe 与 PyVISA 的视觉定位和设备控制接口，并提供无硬件自动验证。",
+      "status": "verified",
+      "resume_ready": true,
+      "requirement_ids": [
+        "REQ-PYTHON-AI",
+        "REQ-AI-COLLAB"
+      ],
+      "evidence": [
+        {
+          "kind": "repository",
+          "label": "eye-galvo-control 公开仓库",
+          "url": "https://github.com/LiTongShuo-edu/eye-galvo-control",
+          "supports": "公开源代码、运行入口和硬件验证边界。"
+        },
+        {
+          "kind": "test_record",
+          "label": "eye-galvo-control Actions",
+          "url": "https://github.com/LiTongShuo-edu/eye-galvo-control/actions",
+          "supports": "自动验证坐标换算和假设备安全关闭逻辑。"
+        }
+      ],
+      "verification": {
+        "method": "运行项目虚拟环境中的无硬件单元测试，并检查公开 CI。",
+        "result": "纯计算及假设备控制测试通过；未以该结果声明现场精度或性能。",
+        "verified_on": "2026-05-27"
+      },
+      "source_disclosure": "公开版本经过 Codex 协助拆分和脱敏；硬件现场结论须另有记录。"
+    },
+    {
+      "id": "CLM-EYE-HARDWARE",
+      "statement": "眼动追踪与振镜系统已完成带日期记录的现场联动和标定复核。",
+      "status": "unverified",
+      "resume_ready": false,
+      "requirement_ids": [
+        "REQ-PYTHON-AI"
+      ],
+      "evidence": [],
+      "source_disclosure": "现场验证记录尚未补入公开仓库，因此该声明不进入最终简历。"
+    },
+    {
+      "id": "CLM-PPT-SKILL",
+      "statement": "ppt-study-guide-skill 使用自制演示材料提供 PPT 到结构化复习文档的可复用工作流和自动输出检查。",
+      "status": "verified",
+      "resume_ready": false,
+      "requirement_ids": [
+        "REQ-AI-COLLAB"
+      ],
+      "evidence": [
+        {
+          "kind": "repository",
+          "label": "ppt-study-guide-skill 公开仓库",
+          "url": "https://github.com/LiTongShuo-edu/ppt-study-guide-skill",
+          "supports": "公开 Skill、脚本、自制示例和验证入口。"
+        }
+      ],
+      "verification": {
+        "method": "运行仓库示例输入的生成与质量检查测试。",
+        "result": "示例工作流通过自动检查，仅证明流程可重复运行。",
+        "verified_on": "2026-05-27"
+      },
+      "source_disclosure": "仓库不发布课程 PPT 或生成答案，示例内容为自制材料。"
+    },
+    {
+      "id": "CLM-EXCLUDED-COURSE-MATERIAL",
+      "statement": "课程 PPT、题目全文及基于其生成的答案不作为公开作品材料。",
+      "status": "excluded",
+      "resume_ready": false,
+      "requirement_ids": [],
+      "evidence": [
+        {
+          "kind": "document",
+          "label": "ppt-study-guide-skill 发布边界",
+          "url": "https://github.com/LiTongShuo-edu/ppt-study-guide-skill/blob/main/SKILL.md",
+          "supports": "记录第三方材料不随公开 Skill 发布的边界。"
+        }
+      ],
+      "source_disclosure": "未获得第三方材料公开再发布授权，不纳入简历证据。"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "target_role": "测试开发工程师",
+  "job_requirements": [
+    {
+      "id": "REQ-AI",
+      "summary": "说明 AI 协作边界。"
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-PRIVATE",
+      "statement": "将未获授权的课程原件公开作为成果。",
+      "status": "excluded",
+      "resume_ready": true,
+      "requirement_ids": [],
+      "evidence": [],
+      "source_disclosure": "第三方原件不可公开。"
+    }
+  ]
+}

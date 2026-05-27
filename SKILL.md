@@ -7,6 +7,14 @@ description: Build job-tailored resumes from verifiable evidence, with requireme
 
 将岗位定制简历视为一项可核验的交付工作：先收集证据，再筛选能够写入简历的陈述，最后生成和复核成稿。
 
+**公开验证入口：** [校验脚本](scripts/validate_evidence.py) | [多项目示例台账](references/example-public-portfolio-ledger.json) | [持续检查](https://github.com/LiTongShuo-edu/resume-evidence-builder/actions)
+
+快速核验公开作品组合：
+
+```powershell
+python scripts/validate_evidence.py references/example-public-portfolio-ledger.json --strict-resume --check-public-links
+```
+
 ## 工作流
 
 1. 提取岗位要求。
@@ -18,7 +26,7 @@ description: Build job-tailored resumes from verifiable evidence, with requireme
    - 不把本地私有路径、联系方式、证件信息、第三方未授权资料写入公开案例。
 3. 建立证据台账。
    - 读取 [references/evidence-ledger.schema.json](references/evidence-ledger.schema.json) 并据此生成 JSON 台账。
-   - 需要示例时读取 [references/example-learningplusplus-ledger.json](references/example-learningplusplus-ledger.json)，仅复用结构和表述边界，不照搬候选人事实。
+   - 需要单项目示例时读取 [references/example-learningplusplus-ledger.json](references/example-learningplusplus-ledger.json)；需要多个公开项目组成的简历证据组合时读取 [references/example-public-portfolio-ledger.json](references/example-public-portfolio-ledger.json)。仅复用结构和表述边界，不照搬候选人事实。
 4. 核验简历声明。
    - 对每条拟写入简历的声明选择 `verified`、`partially_verified`、`unverified` 或 `excluded`。
    - 只有 `verified` 且具备证据、验证方法、验证结果、核验日期和来源披露的声明可以写成确定性成果。
@@ -45,13 +53,14 @@ description: Build job-tailored resumes from verifiable evidence, with requireme
 
 - `references/evidence-ledger.schema.json`：创建台账时遵循的公开数据契约。
 - `references/example-learningplusplus-ledger.json`：包含公开仓库证据的脱敏示例。
+- `references/example-public-portfolio-ledger.json`：包含多个公开作品、未验证硬件结论和排除材料的组合示例。
 - `scripts/validate_evidence.py`：在写简历前检查台账结构、映射和发布链接。
 
 在项目虚拟环境中运行：
 
 ```powershell
 python scripts/validate_evidence.py references/example-learningplusplus-ledger.json --strict-resume
-python scripts/validate_evidence.py references/example-learningplusplus-ledger.json --strict-resume --check-public-links
+python scripts/validate_evidence.py references/example-public-portfolio-ledger.json --strict-resume --check-public-links
 ```
 
 `--strict-resume` 会拒绝任何标为可写入简历但状态不为 `verified` 的声明。`--check-public-links` 仅检查 HTTP(S) 链接能否访问，不为链接中的事实背书。

@@ -46,6 +46,30 @@ def validate_ledger(data: Any, strict_resume: bool = False) -> list[str]:
     if not _nonempty_text(data.get("target_role")):
         errors.append("target_role: a non-empty role name is required")
 
+    project = data.get("project")
+    projects = data.get("projects")
+    if project is not None and projects is not None:
+        errors.append("projects: use either 'project' or 'projects', not both")
+    if projects is not None:
+        if not isinstance(projects, list) or not projects:
+            errors.append("projects: at least one public project is required when supplied")
+        else:
+            project_names: set[str] = set()
+            for index, item in enumerate(projects):
+                path = f"projects[{index}]"
+                if not isinstance(item, dict):
+                    errors.append(f"{path}: expected an object")
+                    continue
+                name = item.get("name")
+                if not _nonempty_text(name):
+                    errors.append(f"{path}.name: a non-empty name is required")
+                elif name in project_names:
+                    errors.append(f"{path}.name: duplicate project '{name}'")
+                else:
+                    project_names.add(name)
+                if not _is_public_url(item.get("public_repository")):
+                    errors.append(f"{path}.public_repository: an http(s) public URL is required")
+
     requirements = data.get("job_requirements")
     requirement_ids: set[str] = set()
     if not isinstance(requirements, list) or not requirements:
@@ -97,6 +121,8 @@ def validate_ledger(data: Any, strict_resume: bool = False) -> list[str]:
         resume_ready = claim.get("resume_ready")
         if not isinstance(resume_ready, bool):
             errors.append(f"{path}.resume_ready: expected a boolean")
+        elif resume_ready and status == "excluded":
+            errors.append(f"{path}: excluded claims cannot be resume-ready")
         elif strict_resume and resume_ready and status != "verified":
             errors.append(
                 f"{path}: resume-ready claims must be verified in strict mode"
@@ -183,6 +209,13 @@ def iter_public_urls(data: dict[str, Any]) -> Iterable[str]:
     seen: set[str] = set()
     project = data.get("project")
     if isinstance(project, dict):
+        repository = project.get("public_repository")
+        if _is_public_url(repository) and repository not in seen:
+            seen.add(repository)
+            yield repository
+    for project in data.get("projects", []):
+        if not isinstance(project, dict):
+            continue
         repository = project.get("public_repository")
         if _is_public_url(repository) and repository not in seen:
             seen.add(repository)
